@@ -3,6 +3,7 @@ import {reactive} from "vue";
 import {useRouter} from "vue-router";
 import {signIn} from "../auth.ts";
 import {useI18n} from "vue-i18n";
+import {baseUrl} from "../api.ts";
 const {locale} = useI18n();
 const router = useRouter();
 
@@ -29,7 +30,7 @@ async function login() {
   let formData = new FormData();
   formData.append('email', credentials.username);
   formData.append('password', credentials.password);
-  await fetch('http://127.0.0.1:8080/signin', {
+  await fetch(baseUrl + '/signin', {
     body: new URLSearchParams(formData),
     method: 'POST'
   }).then((r) => r.json().then(

@@ -26,7 +26,7 @@ export const messages = {
         },
         i40: {
             stations: {
-                station: 'Station | Stations',
+                station: 'Station | Station',
                 pallet_storage: 'Pallet storage',
                 avail_state: 'Availability status',
                 current_op: 'Current Operation',
@@ -40,6 +40,9 @@ export const messages = {
                 start_date: 'Start date',
                 open_qty: 'Open quantity',
                 show_raw_data: 'Show raw Data',
+                sensor_min: 'Minimum offset in minutes',
+                sensor_max: 'Maximum offset in minutes',
+                next_update: 'Next update',
             }
         }
 
@@ -79,7 +82,10 @@ export const messages = {
                 prod_order_id: 'ID des Fertigungsauftrags',
                 start_date: 'Start Datum',
                 open_qty: 'Offene Menge',
-                show_raw_data: 'Zeige rohen Datensatz'
+                show_raw_data: 'Zeige rohen Datensatz',
+                sensor_min: 'Minimaler Abstand in Minuten',
+                sensor_max: 'Maximaler Abstand in Minuten',
+                next_update: 'Nächstes update',
             }
         }
     },

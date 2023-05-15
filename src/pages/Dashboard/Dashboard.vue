@@ -2,22 +2,29 @@
 
 import Navbar from "../../components/Navbar.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
+import Footer from "../../components/Footer.vue";
 const links = [
-  {path: '/', name: 'Dashboard'},
-  {path: '/station', name: 'Station'},
-  {path: '/reports', name: 'Reports'},
-  {path: '/other', name: 'Other Data'},
+  {name: 'dashboard', params: {}, title: 'Dashboard'},
+  {name: 'dashboard.stations', params: {}, title: 'Station'},
+  // {name: 'reports', params: {}, title: 'Reports'},
+  // {name: 'errors', params: {}, title: 'Errors'},
 ];
 </script>
 
 <template>
-  <Navbar />
-  <div class="flex px-5"><Breadcrumb/></div>
   <div class="drawer">
     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content content-stretch">
-
-      <router-view></router-view>
+    <div class="drawer-content">
+      <div class="flex flex-col min-h-screen">
+        <Navbar/>
+        <div class="flex px-5">
+          <Breadcrumb/>
+        </div>
+        <div class="flex flex-col my-5 grow">
+          <router-view></router-view>
+        </div>
+        <Footer/>
+      </div>
     </div>
 
     <div class="drawer-side">
@@ -27,7 +34,7 @@ const links = [
 
         <template v-for="link in links">
           <li class="m-1">
-            <router-link :to="link.path" active-class="btn-primary shadow shadow-lg">{{ link.name }}</router-link>
+            <router-link :to="link" exact-active-class="btn btn-primary text-primary-content">{{ link.title }}</router-link>
           </li>
         </template>
 

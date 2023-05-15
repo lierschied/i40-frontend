@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import Footer from "./components/Footer.vue";
+document.querySelector('html').dataset.theme = localStorage.theme || 'bumblebee';
 </script>
 
 <template>
   <router-view></router-view>
-  <Footer/>
 </template>

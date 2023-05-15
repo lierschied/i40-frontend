@@ -2,8 +2,10 @@
 import {useI18n} from "vue-i18n";
 import {useRouter} from "vue-router";
 import {signOut} from "../auth.ts";
+import {useUserStore} from "../stores/user.ts";
 const {locale} = useI18n();
 const router = useRouter()
+const {user} = useUserStore();
 
 const setLocale = () => {
   localStorage.setItem('locale', locale.value);
@@ -35,15 +37,15 @@ const logout = () => {
       <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
-            <img src="https://plus.unsplash.com/premium_photo-1677507321948-d3f8b80fe6d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80" />
+            <img :src="user.icon" />
           </div>
         </label>
         <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
           <li>
-            <a class="justify-between">
+            <router-link :to="{name: 'dashboard.profile'}" class="justify-between" active-class="bg-primary text-primary-content">
               Profile
               <span class="badge">New</span>
-            </a>
+            </router-link>
           </li>
           <li><a>Settings</a></li>
           <li><a @click="logout">Logout</a></li>

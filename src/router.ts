@@ -1,13 +1,13 @@
 import {createRouter, createWebHistory, Router, RouteRecordRaw, RouterView} from "vue-router";
 import Dashboard from "./pages/Dashboard/Dashboard.vue";
 import Login from "./pages/Login.vue";
-import Default from "./pages/Dashboard/Default.vue";
+import Start from "./pages/Dashboard/Start.vue";
 import NotFound from "./pages/Dashboard/NotFound.vue";
 import {isLoggedIn} from "./auth.ts";
-import Station from "./pages/Dashboard/Stations/Station.vue";
-import PalletStorage from "./pages/Dashboard/Stations/PalletStorage.vue";
-import Sensors from "./pages/Dashboard/Stations/Sensors.vue";
-import Index from "./pages/Dashboard/Stations/Index.vue";
+import Sensors from "./pages/Dashboard/Station/Sensors.vue";
+import Profile from "./pages/Dashboard/Profile/Profile.vue";
+import Overview from "./pages/Dashboard/Station/Overview.vue";
+import Sensor from "./pages/Dashboard/Station/Sensor.vue";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -21,48 +21,67 @@ const routes: RouteRecordRaw[] = [
             {path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: {title: 'not_found'}},
             {
                 path: '',
-                component: Default,
+                name: 'dashboard',
+                component: Start,
                 meta: {
                     title: 'start',
+                    breadcrumbs: [
+                    ]
+                }
+            },
+            {
+                path: 'profile',
+                component: Profile,
+                name: 'dashboard.profile',
+                meta: {
+                    title: 'profile',
+                    breadcrumbs: [
+                        'dashboard',
+                    ]
                 }
             },
             {
                 path: '/station',
                 component: RouterView,
                 meta: {
-                    title: 'station'
+                    title: 'stations',
                 },
                 children: [
                     {
                         path: '',
-                        component: Station,
+                        component: Overview,
+                        name: 'dashboard.stations',
                         meta: {
-                            title: 'overview'
+                            title: 'overview',
+                            breadcrumbs: [
+                                'dashboard',
+                            ]
                         },
                     },
                     {
-                        path: 'pallet-storage',
-                        component: Index,
+                        path: ':station',
+                        name: 'dashboard.station',
+                        component: Sensors,
                         meta: {
-                            title: 'pallet_storage'
-                        },
-                        children: [
-
-                            {
-                                path: 'sensors',
-                                component: Sensors,
-                                meta: {
-                                    title: 'sensors'
-                                }
-                            },
-                            {
-                                path: 'overview',
-                                component: PalletStorage,
-                                meta: {
-                                    title: 'overview',
-                                }
-                            }
-                        ],
+                            title: 'sensors',
+                            breadcrumbs: [
+                                'dashboard',
+                                'dashboard.stations',
+                            ]
+                        }
+                    },
+                    {
+                        path: ':station/:sensor',
+                        name: 'dashboard.station.sensor',
+                        component: Sensor,
+                        meta: {
+                            title: 'sensor',
+                            breadcrumbs: [
+                                'dashboard',
+                                'dashboard.stations',
+                                'dashboard.station'
+                            ]
+                        }
                     },
                 ]
             },
@@ -71,6 +90,7 @@ const routes: RouteRecordRaw[] = [
     },
     {
         path: '/login',
+        name: 'login',
         component: Login,
         meta: {
             requiresAuth: false,

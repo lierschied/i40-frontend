@@ -1,5 +1,5 @@
 import {useUserStore} from "./stores/user.ts";
-
+export const baseUrl = 'http://127.0.0.1:8080';
 function getAuthHeader() {
     const {user} = useUserStore();
     return {
@@ -8,7 +8,7 @@ function getAuthHeader() {
 }
 
 export async function get(url: string): Promise<Response> {
-    return await fetch(url, {
+    return await fetch(baseUrl + url, {
         headers: {
             ...getAuthHeader()
         }
@@ -16,7 +16,7 @@ export async function get(url: string): Promise<Response> {
 }
 
 export async function post(url: string, body: object): Promise<Response> {
-    return await fetch(url, {
+    return await fetch(baseUrl + url, {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
