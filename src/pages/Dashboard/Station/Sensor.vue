@@ -94,7 +94,9 @@ const fetchData = () => {
             }
           ]
         };
+        clearInterval(<number>updateHandler.value);
         nextUpdate.value = updateInterval;
+        update();
       })
 }
 </script>
