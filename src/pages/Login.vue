@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import {reactive} from "vue";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {signIn} from "../auth.ts";
 import {useI18n} from "vue-i18n";
 import {baseUrl} from "../api.ts";
 const {locale} = useI18n();
 const router = useRouter();
+const route = useRoute();
 
 const credentials = reactive({
   username: '',
@@ -36,7 +37,11 @@ async function login() {
   }).then((r) => r.json().then(
       (json) => {
         signIn(json);
-        router.push('/');
+        if (route.query.redirect) {
+          router.push(route.query.redirect);
+        } else {
+          router.push('/');
+        }
       }
   )).catch(e => {
     errors.password = e.message;

@@ -47,7 +47,8 @@ get("/api/v1/measurements").then(r => r.json().then((json) => {
             </svg>
           </div>
           <div class="stat-title">{{ $t('i40.stations.theoretical') }}</div>
-          <div class="stat-value">{{ performance.theoretical }}</div>
+          <div class="stat-value py-2">
+            <div class="radial-progress text-sm" :style="`--size:3rem; --value:${performance.theoretical};`">{{ performance.theoretical }}</div></div>
           <div class="stat-desc">...</div>
         </div>
 

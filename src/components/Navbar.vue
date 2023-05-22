@@ -23,7 +23,7 @@ const logout = () => {
     <div class="navbar-start">
 <!--      <a class="btn btn-ghost normal-case text-xl">daisyUI</a>-->
       <label for="my-drawer" class="btn btn-square btn-sm btn-outline">
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"></path>
         </svg>
       </label>

@@ -12,14 +12,15 @@ const route = useRoute();
                 :key="idx">
         <li>
           <router-link
+              class="capitalize"
               :to="{name: breadcrumb, params: route.params}">
-            {{ $t('page.' + breadcrumb) }}
+            {{ $t('page.' + breadcrumb.replaceAll(".", "_"), route.params) }}
           </router-link>
         </li>
       </template>
       <li>
-        <span class="text-info-content">
-          {{ $t('page.' + route.name) }}
+        <span class="font-bold capitalize">
+          {{ $t('page.' + route.name.replaceAll(".", "_"), route.params).replaceAll("_", " ") }}
         </span>
       </li>
     </ul>

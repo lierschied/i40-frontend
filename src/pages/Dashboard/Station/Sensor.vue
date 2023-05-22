@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {get, post} from "../../../api.ts";
 import {useRoute} from "vue-router";
-import {onMounted, ref} from "vue";
+import {onMounted, onUnmounted, ref} from "vue";
 import {CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip} from 'chart.js'
 import {Line} from 'vue-chartjs'
 import {useTimeAgoStore} from "../../../stores/timeAgo.ts";
@@ -50,14 +50,21 @@ const chartData = ref<{labels: string[], datasets: {}[]}>({
 const updateInterval = 5;
 const nextUpdate = ref<number>(5);
 const updateHandler = ref<number | null>(null);
+const updateDataHandler= ref<number | null>(null);
 
 onMounted(async () => {
   await get(`/api/v1/sensor/${route.params.sensor}`).then(r => r.json()).then(json => sensor_id.value = json.id.replace("sensor:", ""))
   fetchData();
 
-  setInterval(fetchData, 5000);
+  updateDataHandler.value = setInterval(fetchData, 5000);
   update();
 });
+
+onUnmounted(() => {
+  clearInterval(<number>updateDataHandler.value);
+  clearInterval(<number>updateHandler.value);
+})
+
 
 const update = () => {
   updateHandler.value = setInterval(() => nextUpdate.value = nextUpdate.value - 1, 1000);

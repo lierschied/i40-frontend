@@ -9,6 +9,10 @@ export const messages = {
         },
         page: {
             dashboard: 'Dashboard',
+            dashboard_profile: 'Profile',
+            dashboard_stations: 'Stations',
+            dashboard_station: '{station}',
+            dashboard_station_sensor: 'Sensor: {sensor}',
             start: 'Start',
             not_found: 'Not found',
             station: 'Station',
@@ -58,7 +62,9 @@ export const messages = {
         page: {
             not_found: 'Nicht gefunden',
             pallet_storage: 'Palettenlager',
-            overview: 'Übersicht'
+            overview: 'Übersicht',
+            dashboard_profile: 'Profil',
+            dashboard_stations: 'Stationen',
         },
         login: {
             password: 'Passwort',

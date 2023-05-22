@@ -1,5 +1,6 @@
 import {useUserStore} from "./stores/user.ts";
 export const baseUrl = 'http://127.0.0.1:8080';
+// export const baseUrl = '';
 function getAuthHeader() {
     const {user} = useUserStore();
     return {
