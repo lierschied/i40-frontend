@@ -74,8 +74,8 @@ const fetchData = () => {
   if (sensor_id.value === null) return;
   post(`/api/v1/sensor/${route.params.sensor}/values`, {
     sensor: sensor_id.value,
-    min: min.value + 'm',
-    max: max.value + 'm',
+    to: min.value.toString(),
+    from: max.value.toString(),
   })
       .then(r => r.json())
       .then(json => {
@@ -115,7 +115,7 @@ const fetchData = () => {
            :data-tip="$t('i40.stations.sensor_min')">
         <span class="indicator-item indicator-center indicator-bottom badge badge-primary z-0">{{ min }} min</span>
         <span class="font-bold text-neutral-content">{{
-            timeAgo.format(Date.now() - 60 * (1000 * parseInt(min)), 'mini-now')
+            $t('i40.stations.from') }} {{ timeAgo.format(Date.now() - 60 * (1000 * parseInt(min)), 'now')
           }}</span>
         <input v-on:change="fetchData" v-model="min" type="range" min="0" :max="parseInt(max) - 1"
                class="range range-success"/>
@@ -127,7 +127,7 @@ const fetchData = () => {
            :data-tip="$t('i40.stations.sensor_max')">
         <span class="indicator-item indicator-center indicator-bottom badge badge-primary z-0">{{ max }} min</span>
         <span class="font-bold text-neutral-content">{{
-            timeAgo.format(Date.now() - 60 * (1000 * parseInt(max)), 'mini-now')
+            $t('i40.stations.to')}} {{ timeAgo.format(Date.now() - 60 * (1000 * parseInt(max)), 'now')
           }}</span>
         <input v-on:change="fetchData" v-model="max" type="range" :min="parseInt(min) + 1" max="1440"
                class="range range-error"/>

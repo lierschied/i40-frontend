@@ -13,6 +13,7 @@ export const messages = {
             dashboard_stations: 'Stations',
             dashboard_station: '{station}',
             dashboard_station_sensor: 'Sensor: {sensor}',
+            dashboard_alarm: 'Alarms',
             start: 'Start',
             not_found: 'Not found',
             station: 'Station',
@@ -47,8 +48,20 @@ export const messages = {
                 sensor_min: 'Minimum offset in minutes',
                 sensor_max: 'Maximum offset in minutes',
                 next_update: 'Next update',
+                from: 'From',
+                to: 'To',
             }
-        }
+        },
+        profile: {
+            email: 'Email',
+            name: 'Username',
+            icon: 'User icon',
+            choose_theme: 'Choose theme',
+        },
+        alarm: {
+            error: 'Errors for',
+            contains_error: 'Module {module} contains no error | Module {module} contains one error | Module {module} contains {count} errors',
+        },
 
     },
     de: {
@@ -65,6 +78,7 @@ export const messages = {
             overview: 'Übersicht',
             dashboard_profile: 'Profil',
             dashboard_stations: 'Stationen',
+            dashboard_alarm: 'Alarme',
         },
         login: {
             password: 'Passwort',
@@ -92,7 +106,19 @@ export const messages = {
                 sensor_min: 'Minimaler Abstand in Minuten',
                 sensor_max: 'Maximaler Abstand in Minuten',
                 next_update: 'Nächstes update',
+                from: 'Von',
+                to: 'Bis',
             }
-        }
+        },
+        profile: {
+            email: 'Email',
+            name: 'Benutzername',
+            icon: 'Profilbild',
+            choose_theme: 'Wähle Webseiten Erscheinungsbild',
+        },
+        alarm: {
+            error: 'Fehlermeldungen für',
+            contains_error: 'Modul {module} enthält keine Fehlermeldungen | Modul {module} enthält eine Fehlermeldung | Modul {module} enthält {count} Fehlermeldungen',
+        },
     },
 }

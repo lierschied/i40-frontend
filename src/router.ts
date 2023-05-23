@@ -8,6 +8,7 @@ import Sensors from "./pages/Dashboard/Station/Sensors.vue";
 import Profile from "./pages/Dashboard/Profile/Profile.vue";
 import Overview from "./pages/Dashboard/Station/Overview.vue";
 import Sensor from "./pages/Dashboard/Station/Sensor.vue";
+import Alarm from "./pages/Dashboard/Alarm.vue";
 
 const routes: RouteRecordRaw[] = [
     {
@@ -25,8 +26,7 @@ const routes: RouteRecordRaw[] = [
                 component: Start,
                 meta: {
                     title: 'start',
-                    breadcrumbs: [
-                    ]
+                    breadcrumbs: []
                 }
             },
             {
@@ -35,6 +35,17 @@ const routes: RouteRecordRaw[] = [
                 name: 'dashboard.profile',
                 meta: {
                     title: 'profile',
+                    breadcrumbs: [
+                        'dashboard',
+                    ]
+                }
+            },
+            {
+                path: 'alarm',
+                component: Alarm,
+                name: 'dashboard.alarm',
+                meta: {
+                    title: 'alarm',
                     breadcrumbs: [
                         'dashboard',
                     ]

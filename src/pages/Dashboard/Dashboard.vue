@@ -6,8 +6,7 @@ import Footer from "../../components/Footer.vue";
 const links = [
   {name: 'dashboard', params: {}, title: 'Dashboard'},
   {name: 'dashboard.stations', params: {}, title: 'Station'},
-  // {name: 'reports', params: {}, title: 'Reports'},
-  // {name: 'errors', params: {}, title: 'Errors'},
+  {name: 'dashboard.alarm', params: {}, title: 'Alarm'},
 ];
 </script>
 
